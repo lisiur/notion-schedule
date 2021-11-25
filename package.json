@@ -1,0 +1,13 @@
+{
+  "name": "notion-schedule",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node bin/autoCreate.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "moment": "^2.29.1"
+  }
+}

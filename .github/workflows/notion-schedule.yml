@@ -1,0 +1,24 @@
+on:
+  release:
+    types:
+      - created
+  schedule:
+    - cron: "00 16 * * *"
+
+jobs:
+  create-daily:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: auto create
+        env:
+          GaoDeWeatherCity: ${{ secrets.GAODE_WEATHER_CITY }}
+          GaoDeWeatherKey: ${{ secrets.GAODE_WEATHER_KEY }}
+          NotionAuthKey: ${{ secrets.NOTION_AUTH_KEY }}
+          NotionDBKey: ${{ secrets.NOTION_DB_ID }}
+          Timezone: ${{ secrets.TIMEZONE }}
+          Force: ${{ secrets.FORCE }}
+        run: npm install && npm start
